@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.github.raldney.pizzalandia.MainActivity">
+    tools:context="io.github.raldney.pizzalandia.Activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -57,17 +57,17 @@
         tools:layout_editor_absoluteY="221dp" />
 
     <Button
-        android:id="@+id/sign_button"
+        android:id="@+id/signout_button"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/about_us_button"
         android:layout_below="@+id/about_us_button"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@android:color/holo_orange_light"
-        android:text="Sign in/ Sign up"
-        android:textColor="@android:color/holo_orange_light"
+        android:text="@string/logout"
+        android:textColor="@android:color/holo_red_dark"
         tools:layout_editor_absoluteX="16dp"
+
         tools:layout_editor_absoluteY="445dp" />
 
 </RelativeLayout>

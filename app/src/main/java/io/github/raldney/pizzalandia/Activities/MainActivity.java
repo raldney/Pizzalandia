@@ -1,11 +1,13 @@
-package io.github.raldney.pizzalandia;
+package io.github.raldney.pizzalandia.Activities;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,7 +18,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity  implements
+import io.github.raldney.pizzalandia.R;
+
+public class MainActivity extends BaseActivity implements
         View.OnClickListener {
 
     private static final String TAG = "EmailPassword";
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity  implements
     private Button cancelLoginButton;
     private EditText loginText;
     private EditText passwordText;
+    private BaseActivity home;
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
@@ -40,6 +45,41 @@ public class MainActivity extends AppCompatActivity  implements
         cancelLoginButton = (Button)findViewById(R.id.cancel_login_button);
         loginText = (EditText)findViewById(R.id.login_text);
         passwordText = (EditText)findViewById(R.id.password_text);
+
+
+        passwordText.setOnKeyListener(new View.OnKeyListener()
+        {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_ENTER:
+                            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(passwordText.getWindowToken(), 0);
+                            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                            return true;
+                    }
+
+                }
+                return false;
+            }
+        });
+
+        loginText.setOnKeyListener(new View.OnKeyListener()
+        {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_ENTER:
+                            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(loginText.getWindowToken(), 0);
+                            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                            return true;
+                    }
+
+                }
+                return false;
+            }
+        });
 
         // Buttons
         loginButton.setOnClickListener(this);
@@ -57,6 +97,7 @@ public class MainActivity extends AppCompatActivity  implements
         if (!validateForm()) {
             return;
         }
+        showProgressDialog();
         // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -66,8 +107,10 @@ public class MainActivity extends AppCompatActivity  implements
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+
                             Toast.makeText(MainActivity.this, "Usuário autenticado",
                                     Toast.LENGTH_SHORT).show();
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -79,12 +122,16 @@ public class MainActivity extends AppCompatActivity  implements
                         if (!task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+                        }else{
+                            startNewActivity(HomeActivity.class);
                         }
+                        hideProgressDialog();
                         // [END_EXCLUDE]
                     }
                 });
         // [END sign_in_with_email]
     }
+
 
     private boolean validateForm() {
         boolean valid = true;
@@ -113,7 +160,6 @@ public class MainActivity extends AppCompatActivity  implements
         int i = v.getId();
          if (i == R.id.login_button) {
             signIn(loginText.getText().toString(), passwordText.getText().toString());
-
         }
     }
 }

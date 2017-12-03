@@ -3,6 +3,8 @@
     <string name="order_button">Realizar Pedido</string>
     <string name="my_orders_button">Meus Pedidos</string>
     <string name="about_us_button">Sobre nós</string>
-    <string name="cancel_login_button">Cancelar</string>
+    <string name="signup_button">Registrar</string>
     <string name="login_button">Confirmar</string>
+    <string name="loading">Loading…</string>
+    <string name="logout">Sair</string>
 </resources>
