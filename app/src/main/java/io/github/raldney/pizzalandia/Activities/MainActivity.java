@@ -2,7 +2,6 @@ package io.github.raldney.pizzalandia.Activities;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -26,7 +25,7 @@ public class MainActivity extends BaseActivity implements
     private static final String TAG = "EmailPassword";
 
     private Button loginButton;
-    private Button cancelLoginButton;
+    private Button signupButton;
     private EditText loginText;
     private EditText passwordText;
     private BaseActivity home;
@@ -42,7 +41,7 @@ public class MainActivity extends BaseActivity implements
 
         // Views
         loginButton = (Button)findViewById(R.id.login_button);
-        cancelLoginButton = (Button)findViewById(R.id.cancel_login_button);
+        signupButton = (Button)findViewById(R.id.signup_button);
         loginText = (EditText)findViewById(R.id.login_text);
         passwordText = (EditText)findViewById(R.id.password_text);
 
@@ -83,7 +82,7 @@ public class MainActivity extends BaseActivity implements
 
         // Buttons
         loginButton.setOnClickListener(this);
-        cancelLoginButton.setOnClickListener(this);
+        signupButton.setOnClickListener(this);
         loginText.setOnClickListener(this);
         passwordText.setOnClickListener(this);
 
@@ -94,7 +93,7 @@ public class MainActivity extends BaseActivity implements
 
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
-        if (!validateForm()) {
+        if (!validateForm(loginText,passwordText)) {
             return;
         }
         showProgressDialog();
@@ -132,34 +131,15 @@ public class MainActivity extends BaseActivity implements
         // [END sign_in_with_email]
     }
 
-
-    private boolean validateForm() {
-        boolean valid = true;
-
-        String email = loginText.getText().toString();
-        if (TextUtils.isEmpty(email)) {
-            loginText.setError("Required.");
-            valid = false;
-        } else {
-            loginText.setError(null);
-        }
-
-        String password = passwordText.getText().toString();
-        if (TextUtils.isEmpty(password)) {
-            passwordText.setError("Required.");
-            valid = false;
-        } else {
-            passwordText.setError(null);
-        }
-
-        return valid;
-    }
-
     @Override
     public void onClick(View v) {
         int i = v.getId();
          if (i == R.id.login_button) {
             signIn(loginText.getText().toString(), passwordText.getText().toString());
+        }
+
+        if (i == R.id.signup_button) {
+           startNewActivity(SignupActivity.class);
         }
     }
 }

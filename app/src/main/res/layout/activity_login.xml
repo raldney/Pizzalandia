@@ -24,7 +24,7 @@ tools:context="io.github.raldney.pizzalandia.Activities.MainActivity">
         android:layout_marginTop="36dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Login"
+        android:hint="@string/email_text"
         android:layout_below="@+id/imageView2"
         android:layout_alignStart="@+id/password_text"
         android:layout_alignEnd="@+id/password_text" />
@@ -35,7 +35,7 @@ tools:context="io.github.raldney.pizzalandia.Activities.MainActivity">
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password"
+        android:hint="@string/password_text"
         android:layout_marginLeft="157dp"
         android:layout_marginTop="43dp"
         android:layout_below="@+id/login_text"
@@ -53,7 +53,7 @@ tools:context="io.github.raldney.pizzalandia.Activities.MainActivity">
         android:text="@string/login_button" />
 
     <Button
-        android:id="@+id/cancel_login_button"
+        android:id="@+id/signup_button"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

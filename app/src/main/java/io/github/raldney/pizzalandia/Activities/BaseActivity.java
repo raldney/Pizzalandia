@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.widget.EditText;
 
 import io.github.raldney.pizzalandia.R;
 
@@ -41,6 +43,28 @@ public class BaseActivity extends AppCompatActivity {
     protected void startNewActivity(Class activity){
         Intent intent = new Intent(this,activity);
         startActivity(intent);
+    }
+
+    protected boolean validateForm(EditText loginText, EditText passwordText) {
+        boolean valid = true;
+
+        String email = loginText.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            loginText.setError("Required.");
+            valid = false;
+        } else {
+            loginText.setError(null);
+        }
+
+        String password = passwordText.getText().toString();
+        if (TextUtils.isEmpty(password)) {
+            passwordText.setError("Required.");
+            valid = false;
+        } else {
+            passwordText.setError(null);
+        }
+
+        return valid;
     }
 
     @Override
