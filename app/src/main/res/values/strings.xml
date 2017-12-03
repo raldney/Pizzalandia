@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Pizzalandia</string>
+    <string name="order_button">Realizar Pedido</string>
+    <string name="my_orders_button">Meus Pedidos</string>
+    <string name="about_us_button">Sobre nós</string>
+    <string name="cancel_login_button">Cancelar</string>
+    <string name="login_button">Confirmar</string>
+</resources>

@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "38032516334",
+    "firebase_url": "https://pizzalandia-ee3d5.firebaseio.com",
+    "project_id": "pizzalandia-ee3d5",
+    "storage_bucket": "pizzalandia-ee3d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38032516334:android:0a9b6c0f123905c4",
+        "android_client_info": {
+          "package_name": "io.github.raldney"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38032516334-9r1pfc9n6kmtpuh6d3m6husfmqm621p1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO5X2Eup5PNtljtWD2wfz3I5lQXNh3W2Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38032516334:android:f05a394157b96043",
+        "android_client_info": {
+          "package_name": "io.github.raldney.pizzalandia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38032516334-0ifp7i6q4dg0dlfqs7pl84llh5m7uv1f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.raldney.pizzalandia",
+            "certificate_hash": "8c1b203e096b51b2ee4cde6bfb382afacf9a9f88"
+          }
+        },
+        {
+          "client_id": "38032516334-9r1pfc9n6kmtpuh6d3m6husfmqm621p1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO5X2Eup5PNtljtWD2wfz3I5lQXNh3W2Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38032516334-9r1pfc9n6kmtpuh6d3m6husfmqm621p1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
