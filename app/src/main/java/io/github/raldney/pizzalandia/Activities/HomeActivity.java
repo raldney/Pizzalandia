@@ -78,6 +78,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         if (i == R.id.order_button) {
             Toast.makeText(HomeActivity.this, "Entrando em Pedidos",
                     Toast.LENGTH_SHORT).show();
+            startNewActivity(OrderActivity.class);
         }else if (i == R.id.signout_button){
             mAuth.signOut();
             startNewActivity(MainActivity.class);

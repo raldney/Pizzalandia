@@ -11,4 +11,7 @@
     <string name="cancel_button">Cancelar</string>
     <string name="loading">Loading…</string>
     <string name="logout">Sair</string>
+    <string name="order_textview">Monte seu pedido</string>
+    <string name="see_order">Ver pedido</string>
+    <string name="value_textview">0,00 R$</string>
 </resources>

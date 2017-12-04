@@ -10,15 +10,13 @@ public class Pizza {
     private String name;
     private Double price;
     private List<String> ingredients;
-    private String imageUrl;
 
     public Pizza(){}
 
-    public Pizza(String name, Double price, List<String> ingredients,String imageUrl) {
+    public Pizza(String name, Double price, List<String> ingredients) {
         this.name = name;
         this.price = price;
         this.ingredients = ingredients;
-        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -45,13 +43,5 @@ public class Pizza {
         this.ingredients = ingredients;
     }
 
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
 
 }

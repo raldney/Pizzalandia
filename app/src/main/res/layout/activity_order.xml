@@ -2,10 +2,55 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <LinearLayout
+    <ListView
+        android:id="@+id/pizzas_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"></LinearLayout>
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="145dp" />
+
+    <Button
+        android:id="@+id/see_order_button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:text="@string/see_order"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_below="@+id/textView"
+        android:layout_toEndOf="@+id/button3"
+        android:layout_marginStart="12dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/order_textview"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/value_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="42dp"
+        android:text="@string/value_textview"
+        android:layout_alignBaseline="@+id/see_order_button"
+        android:layout_alignBottom="@+id/see_order_button"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/button3"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/see_order_button"
+        android:layout_alignStart="@+id/textView"
+        android:text="@string/cancel_button"
+        android:textColor="@android:color/holo_red_dark" />
 </RelativeLayout>
