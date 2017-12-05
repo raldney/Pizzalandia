@@ -17,6 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import io.github.raldney.pizzalandia.Presenters.PizzaPresenter;
 import io.github.raldney.pizzalandia.R;
 
 public class MainActivity extends BaseActivity implements
@@ -38,7 +39,6 @@ public class MainActivity extends BaseActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         // Views
         loginButton = (Button)findViewById(R.id.login_button);
         signupButton = (Button)findViewById(R.id.signup_button);
@@ -122,6 +122,8 @@ public class MainActivity extends BaseActivity implements
                             Toast.makeText(MainActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }else{
+                            PizzaPresenter pizzaPresenter = new PizzaPresenter(MainActivity.this);
+                            pizzaPresenter.createPizzas();
                             startNewActivity(HomeActivity.class);
                         }
                         hideProgressDialog();

@@ -1,22 +1,30 @@
 package io.github.raldney.pizzalandia.Models;
 
-import java.util.List;
-
 /**
  * Created by raldney on 03/12/2017.
  */
 
 public class Pizza {
+
+
+    private long id;
     private String name;
     private Double price;
-    private List<String> ingredients;
 
     public Pizza(){}
 
-    public Pizza(String name, Double price, List<String> ingredients) {
+    public Pizza(long id,String name, Double price) {
+        this.id = id;
         this.name = name;
         this.price = price;
-        this.ingredients = ingredients;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long _id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -34,14 +42,5 @@ public class Pizza {
     public void setPrice(Double price) {
         this.price = price;
     }
-
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
-    }
-
 
 }
