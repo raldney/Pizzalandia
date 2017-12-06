@@ -3,7 +3,6 @@ package io.github.raldney.pizzalandia.Presenters;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,27 +18,23 @@ import java.util.List;
 import io.github.raldney.pizzalandia.CreateDatabase;
 import io.github.raldney.pizzalandia.Models.Pizza;
 
-import static android.content.ContentValues.TAG;
-import static io.github.raldney.pizzalandia.CreateDatabase.TABELA;
-
 /**
  * Created by raldney on 04/12/2017.
  */
 
-public class PizzaPresenter {
-     private SQLiteDatabase db;
-     private CreateDatabase database;
+public class PizzaPresenter extends Presenter {
+
+    private static String TAG = "PizzaPresenter: ";
 
     public PizzaPresenter(Context context){
-        database = new CreateDatabase(context);
-        db = database.getWritableDatabase();
+        super(context);
     }
 
     public List<Pizza> getPizzas(){
             List<Pizza> list = new ArrayList<Pizza>();
-            String[] columns = new String[]{"id", "name", "price"};
+            String[] columns = new String[]{CreateDatabase.ID, CreateDatabase.NAME, CreateDatabase.PRICE};
 
-            Cursor cursor = db.query(TABELA, columns, null, null, null, null, "name ASC");
+            Cursor cursor = db.query(CreateDatabase.PIZZAS_TABLE, columns, null, null, null, null, CreateDatabase.NAME + " ASC");
 
             if(cursor.getCount() > 0){
                 cursor.moveToFirst();
@@ -67,13 +62,13 @@ public class PizzaPresenter {
                 List<HashMap<String,Object>> pizzas = (List<HashMap<String,Object>>) dataSnapshot.getValue();
                 Log.d(TAG, "Value is: " + pizzas.get(0));
 
-                database.cleanTable(db,TABELA);
+                database.cleanTable(db, CreateDatabase.PIZZAS_TABLE);
                 for(int x = 0; x < pizzas.size(); x++){
                     valores = new ContentValues();
                     valores.put(CreateDatabase.ID, Long.parseLong(pizzas.get(x).get("id").toString()));
                     valores.put(CreateDatabase.NAME, pizzas.get(x).get("name").toString());
                     valores.put(CreateDatabase.PRICE, pizzas.get(x).get("price").toString());
-                    resultado = db.insert(TABELA, null, valores);
+                    resultado = db.insert(CreateDatabase.PIZZAS_TABLE, null, valores);
                     Log.d(TAG, "Inserior is: " + resultado);
                 }
 

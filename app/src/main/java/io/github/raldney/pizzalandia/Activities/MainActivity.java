@@ -15,7 +15,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import io.github.raldney.pizzalandia.Presenters.PizzaPresenter;
 import io.github.raldney.pizzalandia.R;
@@ -105,7 +104,6 @@ public class MainActivity extends BaseActivity implements
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
 
                             Toast.makeText(MainActivity.this, "Usuário autenticado",
                                     Toast.LENGTH_SHORT).show();

@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
+ import	java.text.NumberFormat;
 
 import io.github.raldney.pizzalandia.Models.Pizza;
 import io.github.raldney.pizzalandia.R;
@@ -37,10 +39,10 @@ public class ListPizzaAdapter extends ArrayAdapter<Pizza> {
 
         TextView namePizzaTextView = (TextView) view.findViewById(R.id.name_pizza_textview);
         namePizzaTextView.setText(pizza.getName());
-
-        TextView textViewIdade = (TextView)view.findViewById(R.id.price_pizza_textview);
-        String textoIdade = String.valueOf("R$ " + pizza.getPrice());
-        textViewIdade.setText(textoIdade);
+        Locale ptBr = new Locale("pt", "BR");
+        String textPrice = NumberFormat.getCurrencyInstance(ptBr).format(pizza.getPrice());
+        TextView textViewPrice = (TextView)view.findViewById(R.id.price_pizza_textview);
+        textViewPrice.setText(textPrice);
 
         return view;
     }
