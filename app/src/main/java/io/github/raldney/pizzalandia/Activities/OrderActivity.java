@@ -3,6 +3,7 @@ package io.github.raldney.pizzalandia.Activities;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,8 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener{
         final ListPizzaAdapter pizzaAdapter = new ListPizzaAdapter(this,  pizzas);
         lista.setAdapter(pizzaAdapter);
 
+        Button cancel_button = (Button) findViewById(R.id.cancel_order_Button);
+        cancel_button.setOnClickListener(this);
         lista.setOnItemClickListener(new  AdapterView.OnItemClickListener() {
 
             @Override
@@ -71,13 +74,15 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener{
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.cancel_order_Button) {
+            orderPresenter.cancelOrder();
             Toast.makeText(OrderActivity.this, "Entrando em Pedidos",
                     Toast.LENGTH_SHORT).show();
-            startNewActivity(OrderActivity.class);
+            startNewActivity(HomeActivity.class);
         }else if (i == R.id.see_order_button){
             Toast.makeText(OrderActivity.this, "Entrando em Meus Pedidos",
                     Toast.LENGTH_SHORT).show();
             startNewActivity(MyOrdersActivity.class);
         }
     }
+
 }

@@ -78,6 +78,7 @@ public class OrderPresenter extends Presenter {
         values.put(CreateDatabase.CREATE_AT, order.getCreate_at().toString());
         values.put(CreateDatabase.STATUS, order.getStatus());
         resultado = db.insert(CreateDatabase.ORDER_TABLE, null, values);
+        insertPizzaInOrder(this.getOrder(),pizza,1);
         Log.d(TAG, "Insert is: " + resultado);
 
         return resultado;
@@ -112,5 +113,22 @@ public class OrderPresenter extends Presenter {
                 selectionArgs);
 
         return count;
+    }
+
+    public void cancelOrder(){
+        Order order = this.getOrder();
+        if(order == null)
+            return;
+        ContentValues values = new ContentValues();
+        values.put(CreateDatabase.STATUS, 2); // 2 CANCELADO
+
+        String selection = CreateDatabase.ID + " = ?";
+        String[] selectionArgs = { order.getId().toString()};
+
+        int count = db.update(
+                CreateDatabase.ORDER_TABLE,
+                values,
+                selection,
+                selectionArgs);
     }
 }
