@@ -12,6 +12,7 @@
     <string name="loading">Loading…</string>
     <string name="logout">Sair</string>
     <string name="order_textview">Monte seu pedido</string>
+    <string name="myorder_textview">Pedidos Realizados</string>
     <string name="see_order">Ver pedido</string>
-    <string name="value_textview">0,00 R$</string>
+    <string name="value_textview">R$ 0,00</string>
 </resources>

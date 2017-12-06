@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import static com.google.firebase.analytics.FirebaseAnalytics.Param.QUANTITY;
-
 /**
  * Created by raldney on 04/12/2017.
  */
@@ -21,7 +19,9 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static final String PRICE = "price";
     public static final String CREATE_AT = "create_at";
     public static final String TOTAL_VALUE = "total_value";
-    private static final int VERSION = 2;
+    public static final String QUANTITY = "quantity";
+    public static final String STATUS = "status";
+    private static final int VERSION = 63;
 
     public CreateDatabase(Context context){
         super(context, DATABASE,null,VERSION);
@@ -36,13 +36,13 @@ public class CreateDatabase extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + PIZZAS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + ORDER_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + ORDER_PIZZA_TABLE);
         onCreate(db);
     }
 
     public void cleanTable(SQLiteDatabase db, String table){
         db.execSQL("DROP TABLE IF EXISTS " + PIZZAS_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + ORDER_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + ORDER_PIZZA_TABLE);
         createTablePizza(db);
     }
 
@@ -59,6 +59,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
         String sql = "CREATE TABLE "+ORDER_TABLE+"("
                 + ID + " integer primary key,"
                 + CREATE_AT + " date,"
+                + STATUS + " integer,"
                 + TOTAL_VALUE + " decimal"
                 +")";
         db.execSQL(sql);
@@ -66,7 +67,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
 
     private void createTableOrderPizza(SQLiteDatabase db){
         String sql = "CREATE TABLE "+ORDER_PIZZA_TABLE+"("
-                + ORDER_TABLE+"_"+ID + " integer primary key,"
+                + ORDER_TABLE+"_"+ID + " integer,"
                 + PIZZAS_TABLE+"_"+ID + " integer,"
                 + QUANTITY + " int,"
                 +" FOREIGN KEY ("+PIZZAS_TABLE+"_"+ID+") REFERENCES "+PIZZAS_TABLE+"("+ID+"))";

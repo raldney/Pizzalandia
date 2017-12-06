@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.widget.EditText;
 
+import java.util.Locale;
+
 import io.github.raldney.pizzalandia.R;
 
 /**
@@ -18,6 +20,7 @@ public class BaseActivity extends AppCompatActivity {
     @VisibleForTesting
     public ProgressDialog mProgressDialog;
     public Activity actualActivity;
+    public Locale ptBr = new Locale("pt", "BR");
 
     BaseActivity(Activity actualActivity){
         this.actualActivity = actualActivity;
